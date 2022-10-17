@@ -2,7 +2,7 @@ import { openWindow, log, table } from '/external.js'
 
 /** @param {NS} ns */
 export async function main(ns) {
-  const url = 'https://github.com/JasonGoemaat/bitburner-vue-viewer/'
+  const url = 'https://jasongoemaat.github.io/bitburner-vue-viewer/'
   // const url = ''http://127.0.0.1:5173/bitburner-vue-viewer/' // dev
   openWindow(url)
   await ns.sleep(5000) // time for window to open and it to start listening for messages
