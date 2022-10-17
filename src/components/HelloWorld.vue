@@ -1,9 +1,30 @@
 <script setup>
 import { ref } from 'vue'
+/* run this to open the page and listen for messages
+var w = window.open('http://127.0.0.1:5173/bitburner-vue-viewer/')
+var listener = window.addEventListener('message', event => {
+  console.log(`message from origin '${event.origin}''`)
+  console.log('  ' + JSON.stringify(event.data))
+  event.source.postMessage({ text: 'Thank you!' }, event.origin)
+})
+
+// post a sample message to our vue app
+w.postMessage({ text: 'Hello, world!' }, "*")
+w.postMessage({ text: 'Hello, world!' }, "http://127.0.0.1:5173/")
+
+//
+*/
 
 defineProps({
-  msg: String
+  msg: String,
 })
+
+const countClick = event => {
+  count.value++
+  if (window.opener) {
+    window.opener.postMessage({ source: 'counter', count: count.value }, "*")
+  }
+}
 
 const count = ref(0)
 </script>
@@ -12,7 +33,7 @@ const count = ref(0)
   <!-- <h1>{{ msg }}</h1> -->
 
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
+    <button type="button" @click="countClick">count is {{ count }}</button>
     <!-- <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR

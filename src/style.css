@@ -13,9 +13,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-a {
+body {
+  padding: 0;
+  margin: 5px;
+}
+
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -87,4 +94,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
